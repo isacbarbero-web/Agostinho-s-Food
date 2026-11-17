@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agostinho's Food - Delivery & Restaurante Gourmet</title>
+    <!-- Font Awesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <script src="javas.js" defer></script>
+
+    <!-- CONTAINER DE TOAST NOTIFICATIONS -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="brand-logo">
+                <div class="brand-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Agostinho's <span>Food</span></h1>
+                    <span class="status-badge">
+                        <span class="status-dot"></span> Aberto Agora
+                    </span>
+                </div>
+            </a>
+
+            <!-- BUSCA EM TEMPO REAL -->
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Buscar por hambúrguer, pizza, bebida...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <!-- GATILHO DO CARRINHO -->
+            <button id="cartTriggerBtn" class="cart-trigger">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Carrinho</span>
+                <span id="cartBadge" class="cart-badge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- BANNER HERO COM CUPONS -->
+    <section class="hero-banner">
+        <div class="banner-card">
+            <div class="banner-content">
+                <span class="banner-tag">🔥 Ofertas Especiais</span>
+                <h2>Sabor & Tradição com Entrega Rápida</h2>
+                <p>Peça os lanches e porções mais suculentos da cidade sem sair de casa!</p>
+                <div class="coupons-flex">
+                    <div class="coupon-chip" onclick="copiarCupom('AGOSTINHO10')">
+                        <i class="fas fa-ticket-alt"></i> 10% OFF: <strong>AGOSTINHO10</strong>
+                    </div>
+                    <div class="coupon-chip" onclick="copiarCupom('PRIMEIRA15')">
+                        <i class="fas fa-tag"></i> 15% 1ª Compra: <strong>PRIMEIRA15</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NAVEGAÇÃO POR CATEGORIAS -->
+    <section class="section-container">
+        <div class="categories-scroll">
+            <button class="cat-item active" onclick="filtrarCategoria('todos')">
+                <i class="fas fa-border-all"></i> Todos os Itens
+            </button>
+            <button class="cat-item" onclick="filtrarCategoria('hamburgueres')">
+                <i class="fas fa-hamburger"></i> Hambúrgueres
+            </button>
+            <button class="cat-item" onclick="filtrarCategoria('pizzas')">
+                <i class="fas fa-pizza-slice"></i> Pizzas
+            </button>
+            <button class="cat-item" onclick="filtrarCategoria('porcoes')">
+                <i class="fas fa-drumstick-bite"></i> Porções
+            </button>
+            <button class="cat-item" onclick="filtrarCategoria('bebidas')">
+                <i class="fas fa-glass-cheers"></i> Bebidas
+            </button>
+            <button class="cat-item" onclick="filtrarCategoria('sobremesas')">
+                <i class="fas fa-ice-cream"></i> Sobremesas
+            </button>
+        </div>
+    </section>
+
+    <!-- CARDÁPIO / GRID DE PRODUTOS -->
+    <main class="section-container">
+        <div class="section-header">
+            <h2 class="section-title" id="categoryTitle">Nosso Cardápio</h2>
+        </div>
+        <div id="productsGrid" class="products-grid">
+            <!-- Renderizado dinamicamente via JS -->
+        </div>
+    </main>
+
+    <!-- SEÇÃO DE DEPOIMENTOS DE CLIENTES -->
+    <section class="reviews-section">
+        <div class="section-container">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Cliente" class="review-avatar">
+                        <div>
+                            <div class="review-name">Mariana Souza</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"O lanche chega super quente e a entrega é incrivelmente rápida. O Agostinho Smash Burguer é o melhor!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Cliente" class="review-avatar">
+                        <div>
+                            <div class="review-name">Carlos Eduardo</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"A batata suprema com cheddar e bacon é absurda de boa. Atendimento via WhatsApp muito simples e prático."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Cliente" class="review-avatar">
+                        <div>
+                            <div class="review-name">Fernanda Lima</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Pizzas super recheadas e massa crocante. Virei cliente fiel do Agostinho's Food!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER COMPLETO -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h3>Agostinho's Food</h3>
+                <p>O restaurante que leva até você o verdadeiro sabor artesanal com ingredientes selecionados de alta qualidade.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Horário de Funcionamento</h3>
+                <p><i class="far fa-clock"></i> Terça a Domingo: 18:00h às 23:30h</p>
+                <p><i class="fas fa-map-marker-alt"></i> Entregamos em toda a região central e bairros vizinhos.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Formas de Pagamento</h3>
+                <ul>
+                    <li><i class="fas fa-qrcode"></i> Pix (Aprovação Instantânea)</li>
+                    <li><i class="far fa-credit-card"></i> Cartões de Crédito / Débito</li>
+                    <li><i class="fas fa-money-bill-wave"></i> Dinheiro (Levamos troco)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Agostinho's Food. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- MODAL DE PERSONALIZAÇÃO DE PRODUTO -->
+    <div id="productModal" class="modal-backdrop">
+        <div class="modal-box">
+            <div class="modal-img-header">
+                <img id="modalImg" src="" alt="Produto">
+                <button class="close-modal-btn" onclick="fecharModalProduto()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h3 id="modalTitle" class="modal-title"></h3>
+                <p id="modalDesc" class="modal-desc"></p>
+
+                <div class="extras-title">
+                    <span>Adicionais Especiais</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">(Opcional)</span>
+                </div>
+                <div id="modalExtrasList" class="extras-list">
+                    <!-- Gerado dinamicamente -->
+                </div>
+
+                <div class="extras-title">Observações do Pedido</div>
+                <textarea id="modalObs" class="obs-input" placeholder="Ex: Sem cebola, molho à parte, ponto da carne bem passado..."></textarea>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-qty">
+                    <button class="qty-modal-btn" onclick="alterarQtdModal(-1)">-</button>
+                    <span id="modalQtyVal" class="qty-val">1</span>
+                    <button class="qty-modal-btn" onclick="alterarQtdModal(1)">+</button>
+                </div>
+                <button class="btn-confirm-add" onclick="confirmarAdicaoModal()">
+                    <span>Adicionar ao Pedido</span>
+                    <span id="modalTotalPrice">R$ 0,00</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARRINHO LATERAL (DRAWER) -->
+    <div id="cartDrawerBackdrop" class="drawer-backdrop">
+        <div class="cart-drawer">
+            <div class="drawer-header">
+                <h2><i class="fas fa-shopping-basket"></i> Seu Pedido</h2>
+                <button class="drawer-close" onclick="fecharCarrinho()">&times;</button>
+            </div>
+
+            <!-- BARRA DE FRETE GRÁTIS -->
+            <div class="shipping-progress-container">
+                <div id="shippingText" class="shipping-text">Adicione R$ 60,00 para Frete Grátis</div>
+                <div class="progress-track">
+                    <div id="progressBarFill" class="progress-bar-fill"></div>
+                </div>
+            </div>
+
+            <div id="drawerCartItems" class="drawer-content">
+                <!-- Itens inseridos via JS -->
+            </div>
+
+            <div class="drawer-footer">
+                <div class="coupon-box">
+                    <input type="text" id="couponInput" placeholder="CÓDIGO DO CUPOM">
+                    <button onclick="aplicarCupom()">APLICAR</button>
+                </div>
+
+                <div class="delivery-form">
+                    <input type="text" id="clientName" placeholder="Seu Nome Completo *">
+                    <input type="text" id="clientAddress" placeholder="Rua, Número e Bairro *">
+                    <select id="paymentMethod" onchange="toggleTrocoInput()">
+                        <option value="Pix">Pagamento: Pix</option>
+                        <option value="Cartão de Crédito/Débito">Pagamento: Cartão na Entrega</option>
+                        <option value="Dinheiro">Pagamento: Dinheiro</option>
+                    </select>
+                    <input type="text" id="changeInput" placeholder="Troco para quanto? (Ex: R$ 50,00)" style="display: none;">
+                </div>
+
+                <div class="summary-lines">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotalVal">R$ 0,00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Desconto Cupom:</span>
+                        <span id="discountVal">R$ 0,00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Taxa de Entrega:</span>
+                        <span id="shippingVal">R$ 7,00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total Final:</span>
+                        <span id="totalVal">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <button class="btn-whatsapp-checkout" onclick="finalizarPedidoWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Concluir Pedido no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
