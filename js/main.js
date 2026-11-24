@@ -1,193 +1,17 @@
-const produtos = [
-            {
-                id: 1,
-                nome: "Agostinho Smash Burguer",
-                categoria: "hamburgueres",
-                preco: 32.90,
-                descricao: "Dois hambúrgueres smash 100g de fraldinha, cheddar duplo derretido, bacon crocante em cubos e maionese artesanal da casa.",
-                imagem: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80",
-                badge: "Mais Vendido",
-                badgeColor: "highlight",
-                rating: 4.9,
-                opcionais: [
-                    { id: "opt1", nome: "Queijo Cheddar Extra", preco: 4.50 },
-                    { id: "opt2", nome: "Bacon Crocante Extra", preco: 5.00 },
-                    { id: "opt3", nome: "Molho Especial Agostinho", preco: 3.50 }
-                ]
-            },
-            {
-                id: 2,
-                nome: "X-Salada Tradicional Gourmet",
-                categoria: "hamburgueres",
-                preco: 24.90,
-                descricao: "Hambúrguer artesanal 160g, queijo prato fatiado, alface americana fresca, tomate maduro e maionese temperada no pão brioche.",
-                imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&auto=format&fit=crop&q=80",
-                badge: "Clássico",
-                badgeColor: "",
-                rating: 4.8,
-                opcionais: [
-                    { id: "opt1", nome: "Hambúrguer Adicional 160g", preco: 9.00 },
-                    { id: "opt2", nome: "Ovo Frito na Manteiga", preco: 3.00 }
-                ]
-            },
-            {
-                id: 3,
-                nome: "Burguer Monster Bacon",
-                categoria: "hamburgueres",
-                preco: 38.90,
-                descricao: "Triple burguer 300g de carne, muito bacon crisp, cebola empanada super crocante e molho barbecue defumado.",
-                imagem: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&auto=format&fit=crop&q=80",
-                badge: "Destaque",
-                badgeColor: "gold",
-                rating: 5.0,
-                opcionais: [
-                    { id: "opt1", nome: "Pequena porção de batata de acompanhamento", preco: 8.00 }
-                ]
-            },
-            {
-                id: 4,
-                nome: "Pizza Calabresa Especial",
-                categoria: "pizzas",
-                preco: 49.90,
-                descricao: "Calabresa artesanal fatiada fina, cebola roxa caramelizada, azeitonas azapa, molho de tomate pelado e orégano fresco.",
-                imagem: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80",
-                badge: "Favorito",
-                badgeColor: "highlight",
-                rating: 4.9,
-                opcionais: [
-                    { id: "opt1", nome: "Borda Recheada de Catupiry Original", preco: 10.00 },
-                    { id: "opt2", nome: "Borda Recheada de Cheddar", preco: 10.00 }
-                ]
-            },
-            {
-                id: 5,
-                nome: "Pizza 4 Queijos Premium",
-                categoria: "pizzas",
-                preco: 54.90,
-                descricao: "Combinação perfeita de muçarela especial, gorgonzola suave, provolone defumado e o legítimo catupiry.",
-                imagem: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&auto=format&fit=crop&q=80",
-                badge: "Chef",
-                badgeColor: "",
-                rating: 4.8,
-                opcionais: [
-                    { id: "opt1", nome: "Borda Recheada de Catupiry", preco: 10.00 }
-                ]
-            },
-            {
-                id: 6,
-                nome: "Batata Frita Suprema Cheddar & Bacon",
-                categoria: "porcoes",
-                preco: 29.90,
-                descricao: "Porção generosa de 500g de batata frita bem crocante por fora e macia por dentro, coberta com creme de cheddar e bacon.",
-                imagem: "https://www.receitasja.com.br/wp-content/uploads/2026/06/Batata-frita-com-cheddar-e-bacon-1024x576.jpg",
-                badge: "Mais Pedido",
-                badgeColor: "gold",
-                rating: 4.9,
-                opcionais: [
-                    { id: "opt1", nome: "Molho de Alho Extra", preco: 3.00 }
-                ]
-            },
-            {
-                id: 7,
-                nome: "Frango a Passarinho Crocante",
-                categoria: "porcoes",
-                preco: 36.90,
-                descricao: "Cortes de frango marinados em ervas finas, fritos até dourarem perfeitamente, polvilhados com alho crocante e salsinha.",
-                imagem: "https://images.unsplash.com/photo-1562967914-608f82629710?w=600&auto=format&fit=crop&q=80",
-                badge: "Porção Família",
-                badgeColor: "",
-                rating: 4.7,
-                opcionais: [
-                    { id: "opt1", nome: "Fatias de Limão Siciliano Extra", preco: 2.00 }
-                ]
-            },
-            {
-                id: 8,
-                nome: "Coca-Cola Original 2L",
-                categoria: "bebidas",
-                preco: 12.00,
-                descricao: "Garrafa de 2 Litros trincando de gelada para acompanhar seu pedido.",
-                imagem: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&auto=format&fit=crop&q=80",
-                badge: "Geladinha",
-                badgeColor: "",
-                rating: 5.0,
-                opcionais: []
-            },
-             {
-                id: 4,
-                nome: "Soda Italiana",
-                categoria: "Soda",
-                preco: 49.90,
-                descricao: "Calabresa artesanal fatiada fina, cebola roxa caramelizada, azeitonas azapa, molho de tomate pelado e orégano fresco.",
-                imagem: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=80",
-                badge: "Favorito",
-                badgeColor: "highlight",
-                rating: 4.9,
-                opcionais: [
-                    { id: "opt1", nome: "Borda Recheada de Catupiry Original", preco: 10.00 },
-                    { id: "opt2", nome: "Borda Recheada de Cheddar", preco: 10.00 }
-                ]
-            },
-            {
-                id: 9,
-                nome: "Suco Natural de Laranja 500ml",
-                categoria: "bebidas",
-                preco: 9.00,
-                descricao: "Suco 100% fruta natural espremido na hora, sem adição de conservantes ou água.",
-                imagem: "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=600&auto=format&fit=crop&q=80",
-                badge: "Natural",
-                badgeColor: "",
-                rating: 4.9,
-                opcionais: []
-            },
-            {
-                id: 10,
-                nome: "Pudim Tradicional de Leite Condensado",
-                categoria: "sobremesas",
-                preco: 12.90,
-                descricao: "Fatia generosa de pudim super cremoso e sem furinhos, banhado em calda de caramelo dourado.",
-                imagem: "https://tse2.mm.bing.net/th/id/OIP.psAaZtJ9_V6Py-SsmOqJBAHaEB?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-                badge: "Delícia",
-                badgeColor: "gold",
-                rating: 5.0,
-                opcionais: []
-            },
-            {
-                id: 11,
-                nome: "Grand Gateau com Sorvete",
-                categoria: "sobremesas",
-                preco: 22.90,
-                descricao: "Petit gateau quente com recheio cremoso que escorre ao cortar, servido com picolé e calda de chocolate.",
-                imagem: "https://tse4.mm.bing.net/th/id/OIP.ksTg8JBuDXO4T0TSX5o8MAHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
-                badge: "Sobremesa VIP",
-                badgeColor: "highlight",
-                rating: 4.9,
-                opcionais: []
-            },
-            {
-                id: 11,
-                nome: "Cheese Cake",
-                categoria: "sobremesas",
-                preco: 33.90,
-                descricao: "A melhor sobremesa que o agostinho ja comeu!",
-                imagem: "https://cookedbymia.com/wp-content/uploads/2025/05/2-Classic-New-York-Cheesecake.webp",
-                badge: "Sobremesa VIP",
-                badgeColor: "highlight",
-                rating: 4.9,
-                opcionais: []
-            }
-            
-        ];
-
         /* ==========================================================================
            ESTADO DA APLICAÇÃO
            ========================================================================== */
         let carrinho = [];
         let categoriaAtual = 'todos';
-        let descontoPorcentagem = 0;
-        let cupomAplicado = "";
-        const taxaEntrega = 7.00;
-        const metaFreteGratis = 60.00;
+        let produtos = [];
+        let categorias = [];
+        let cupons = [];
+        let cupomAplicado = null;
+        let taxaEntrega;
+        let metaFreteGratis;
+        let proximoIdCarrinho = 1;
+        let ultimoPedido = "";
+        let referenciaPedido = "";
 
         // Estado do Modal de Customização
         let produtoModalAtual = null;
@@ -198,24 +22,69 @@ const produtos = [
            INICIALIZAÇÃO & EVENTOS
            ========================================================================== */
         document.addEventListener("DOMContentLoaded", () => {
-            renderizarCardapio(produtos);
-
-            // Gatilho do carrinho
             document.getElementById("cartTriggerBtn").addEventListener("click", abrirCarrinho);
-            document.getElementById("cartDrawerBackdrop").addEventListener("click", (e) => {
-                if (e.target.id === "cartDrawerBackdrop") fecharCarrinho();
+            document.getElementById("cartDrawerBackdrop").addEventListener("click", (evento) => {
+                if (evento.target.id === "cartDrawerBackdrop") fecharCarrinho();
             });
-
-            // Busca em tempo real
-            document.getElementById("searchInput").addEventListener("input", (e) => {
-                const termo = e.target.value.toLowerCase().trim();
-                const filtrados = produtos.filter(p =>
-                    (categoriaAtual === 'todos' || p.categoria === categoriaAtual) &&
-                    (p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo))
-                );
-                renderizarCardapio(filtrados);
+            document.getElementById("searchInput").addEventListener("input", () => {
+                if (taxaEntrega !== undefined) filtrarCategoria(categoriaAtual);
             });
+            carregarCardapio();
         });
+
+        async function carregarCardapio() {
+            const grid = document.getElementById("productsGrid");
+            grid.textContent = "Carregando cardápio…";
+            try {
+                const resposta = await fetch("pages/cardapio.php");
+                if (!resposta.ok) throw new Error("Cardápio indisponível.");
+                const dados = await resposta.json();
+                produtos = dados.produtos;
+                categorias = dados.categorias;
+                cupons = dados.cupons;
+                taxaEntrega = dados.taxa_entrega;
+                metaFreteGratis = dados.meta_frete_gratis;
+
+                const icones = {
+                    "Hambúrgueres": "hamburger",
+                    "Pizzas": "pizza-slice",
+                    "Porções": "drumstick-bite",
+                    "Bebidas": "glass-cheers",
+                    "Sobremesas": "ice-cream"
+                };
+                const filtros = document.getElementById("categoryFilters");
+                categorias.forEach(categoria => {
+                    const botao = document.createElement("button");
+                    const icone = document.createElement("i");
+                    icone.className = "fas fa-" + (icones[categoria.nome] || "border-all");
+                    botao.className = "cat-item";
+                    botao.dataset.categoria = categoria.id;
+                    botao.appendChild(icone);
+                    botao.append(" " + categoria.nome);
+                    botao.addEventListener("click", () => filtrarCategoria(categoria.id));
+                    filtros.appendChild(botao);
+                });
+
+                const ofertas = document.getElementById("couponList");
+                cupons.forEach(cupom => {
+                    const botao = document.createElement("button");
+                    const codigo = document.createElement("strong");
+                    codigo.textContent = cupom.codigo;
+                    botao.className = "coupon-chip";
+                    botao.append(cupom.percentual + "% OFF: ", codigo);
+                    botao.addEventListener("click", () => copiarCupom(cupom.codigo));
+                    ofertas.appendChild(botao);
+                });
+                filtrarCategoria("todos");
+                atualizarCarrinhoUI();
+            } catch (erro) {
+                grid.textContent = "Não foi possível carregar o cardápio. ";
+                const botao = document.createElement("button");
+                botao.textContent = "Tentar novamente";
+                botao.addEventListener("click", carregarCardapio);
+                grid.appendChild(botao);
+            }
+        }
 
         /* ==========================================================================
            RENDERIZAÇÃO DO CARDÁPIO
@@ -238,28 +107,47 @@ const produtos = [
                 const card = document.createElement("div");
                 card.className = "product-card";
                 card.innerHTML = `
-                    ${p.badge ? `<span class="card-badge ${p.badgeColor}">${p.badge}</span>` : ''}
                     <div class="product-img-wrapper">
-                        <img src="${p.imagem}" alt="${p.nome}" loading="lazy">
+                        <img loading="lazy">
                         <div class="rating-pill">
                             <i class="fas fa-star"></i> ${p.rating.toFixed(1)}
                         </div>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">${p.nome}</h3>
-                        <p class="card-desc">${p.descricao}</p>
+                        <h3 class="card-title"></h3>
+                        <p class="card-desc"></p>
                         <div class="card-footer">
-                            <div class="card-price">R$ ${p.preco.toFixed(2).replace('.', ',')}</div>
+                            <div class="card-price">${formatarPreco(emCentavos(p.preco))}</div>
                             <div class="btn-group">
-                                ${p.opcionais && p.opcionais.length > 0 ?
-                                    `<button class="btn-opt" onclick="abrirModalProduto(${p.id})">Opções</button>` : ''}
-                                <button class="btn-add" onclick="adicionarRapido(${p.id})">
-                                    <i class="fas fa-plus"></i> Add
-                                </button>
+                                <button class="btn-opt">Opções</button>
+                                <button class="btn-add"><i class="fas fa-plus"></i> Add</button>
                             </div>
                         </div>
                     </div>
                 `;
+                const imagem = card.querySelector("img");
+                imagem.src = p.imagem;
+                imagem.alt = p.nome;
+                card.querySelector(".card-title").textContent = p.nome;
+                card.querySelector(".card-desc").textContent = p.descricao;
+                if (p.badge) {
+                    const selo = document.createElement("span");
+                    selo.className = "card-badge";
+                    if (["Mais Vendido", "Favorito", "Sobremesa VIP"].includes(p.badge)) {
+                        selo.classList.add("highlight");
+                    } else if (["Destaque", "Mais Pedido", "Delícia"].includes(p.badge)) {
+                        selo.classList.add("gold");
+                    }
+                    selo.textContent = p.badge;
+                    card.prepend(selo);
+                }
+                const opcoes = card.querySelector(".btn-opt");
+                if (p.opcionais.length > 0) {
+                    opcoes.addEventListener("click", () => abrirModalProduto(p.id));
+                } else {
+                    opcoes.remove();
+                }
+                card.querySelector(".btn-add").addEventListener("click", () => adicionarRapido(p.id));
                 grid.appendChild(card);
             });
         }
@@ -270,32 +158,18 @@ const produtos = [
         function filtrarCategoria(categoria) {
             categoriaAtual = categoria;
 
-            // Atualizar classes dos botões
-            document.querySelectorAll(".cat-item").forEach(btn => {
-                if (btn.getAttribute("onclick").includes(`'${categoria}'`)) {
-                    btn.classList.add("active");
-                } else {
-                    btn.classList.remove("active");
-                }
+            document.querySelectorAll(".cat-item").forEach(botao => {
+                botao.classList.toggle("active", botao.dataset.categoria === String(categoria));
             });
-
+            if (taxaEntrega === undefined) return;
             const termo = document.getElementById("searchInput").value.toLowerCase().trim();
             const filtrados = produtos.filter(p =>
-                (categoria === 'todos' || p.categoria === categoria) &&
+                (categoria === "todos" || p.categoria === categoria) &&
                 (p.nome.toLowerCase().includes(termo) || p.descricao.toLowerCase().includes(termo))
             );
 
-            // Atualizar título
-            const titulos = {
-                'todos': 'Nosso Cardápio Completo do Agosto',
-                'hamburgueres': 'Hambúrgueres Artesanais do Agosto 🍔',
-                'pizzas': 'Pizzas Especiais do Agosto 🍕',
-                'porcoes': 'Porções Crocantes do Agosto 🍟',
-                'bebidas': 'Bebidas Geladas do Agosto 🥤',
-                'sobremesas': 'Sobremesas Especiais do Agosto 🍨'
-            };
-            document.getElementById("categoryTitle").textContent = titulos[categoria] || 'Nosso Cardápio';
-
+            const selecionada = categorias.find(grupo => grupo.id === categoria);
+            document.getElementById("categoryTitle").textContent = selecionada ? selecionada.nome : "Nosso Cardápio";
             renderizarCardapio(filtrados);
         }
 
@@ -327,11 +201,13 @@ const produtos = [
                     div.className = "extra-item";
                     div.innerHTML = `
                         <div class="extra-left">
-                            <input type="checkbox" onchange="toggleOpcionalModal('${opt.id}')">
-                            <span>${opt.nome}</span>
+                            <input type="checkbox">
+                            <span></span>
                         </div>
                         <span class="extra-price">+ R$ ${opt.preco.toFixed(2).replace('.', ',')}</span>
                     `;
+                    div.querySelector("input").addEventListener("change", () => toggleOpcionalModal(opt.id));
+                    div.querySelector("span").textContent = opt.nome;
                     extrasList.appendChild(div);
                 });
             }
@@ -379,11 +255,10 @@ const produtos = [
             const precoUnitarioFinal = produtoModalAtual.preco + somaExtras;
 
             carrinho.push({
-                idCart: Date.now(),
+                idCart: proximoIdCarrinho++,
                 idProduto: produtoModalAtual.id,
                 nome: produtoModalAtual.nome,
                 imagem: produtoModalAtual.imagem,
-                precoBase: produtoModalAtual.preco,
                 precoUnitarioFinal: precoUnitarioFinal,
                 quantidade: quantidadeModal,
                 extras: [...opcionaisSelecionadosModal],
@@ -409,11 +284,10 @@ const produtos = [
                 existente.quantidade += 1;
             } else {
                 carrinho.push({
-                    idCart: Date.now(),
+                    idCart: proximoIdCarrinho++,
                     idProduto: prod.id,
                     nome: prod.nome,
                     imagem: prod.imagem,
-                    precoBase: prod.preco,
                     precoUnitarioFinal: prod.preco,
                     quantidade: 1,
                     extras: [],
@@ -433,6 +307,7 @@ const produtos = [
         }
 
         function fecharCarrinho() {
+            if (document.getElementById("checkoutBtn").disabled) return;
             document.getElementById("cartDrawerBackdrop").classList.remove("active");
         }
 
@@ -489,11 +364,11 @@ const produtos = [
                     }
 
                     row.innerHTML = `
-                        <img src="${item.imagem}" alt="${item.nome}" class="cart-item-img">
+                        <img class="cart-item-img">
                         <div class="cart-item-details">
-                            <div class="cart-item-name">${item.nome}</div>
-                            ${extrasText ? `<div class="cart-item-extras">${extrasText}</div>` : ''}
-                            <div class="cart-item-price">R$ ${(item.precoUnitarioFinal * item.quantidade).toFixed(2).replace('.', ',')}</div>
+                            <div class="cart-item-name"></div>
+                            ${extrasText ? '<div class="cart-item-extras"></div>' : ''}
+                            <div class="cart-item-price">${formatarPreco(emCentavos(item.precoUnitarioFinal) * item.quantidade)}</div>
                             <div class="cart-item-controls">
                                 <button onclick="alterarQtdCarrinho(${item.idCart}, -1)">-</button>
                                 <span>${item.quantidade}</span>
@@ -504,17 +379,16 @@ const produtos = [
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     `;
+                    const imagem = row.querySelector("img");
+                    imagem.src = item.imagem;
+                    imagem.alt = item.nome;
+                    row.querySelector(".cart-item-name").textContent = item.nome;
+                    if (extrasText) row.querySelector(".cart-item-extras").textContent = extrasText;
                     itemsContainer.appendChild(row);
                 });
             }
 
-            // Cálculos
-            const subtotal = carrinho.reduce((acc, i) => acc + (i.precoUnitarioFinal * i.quantidade), 0);
-            const valorDesconto = subtotal * descontoPorcentagem;
-            const frete = (subtotal >= metaFreteGratis || carrinho.length === 0) ? 0 : taxaEntrega;
-            const totalFinal = Math.max(0, subtotal - valorDesconto + frete);
-
-            // Atualização da barra de progresso de frete grátis
+            const { subtotal, desconto, frete, total } = calcularResumo();
             const shippingText = document.getElementById("shippingText");
             const progressBar = document.getElementById("progressBarFill");
 
@@ -522,35 +396,46 @@ const produtos = [
                 shippingText.textContent = "🎉 Você ganhou Frete GRÁTIS!";
                 progressBar.style.width = "100%";
             } else {
-                const faltam = metaFreteGratis - subtotal;
-                shippingText.textContent = `Adicione R$ ${faltam.toFixed(2).replace('.', ',')} para Frete Grátis`;
-                const porcentagem = (subtotal / metaFreteGratis) * 100;
-                progressBar.style.width = `${porcentagem}%`;
+                shippingText.textContent = "Adicione " + formatarPreco(metaFreteGratis - subtotal) + " para Frete Grátis";
+                progressBar.style.width = (subtotal / metaFreteGratis * 100) + "%";
             }
+            document.getElementById("subtotalVal").textContent = formatarPreco(subtotal);
+            document.getElementById("discountVal").textContent = "- " + formatarPreco(desconto);
+            document.getElementById("shippingVal").textContent = frete === 0 ? "GRÁTIS" : formatarPreco(frete);
+            document.getElementById("totalVal").textContent = formatarPreco(total);
+        }
 
-            // Exibir textos
-            document.getElementById("subtotalVal").textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-            document.getElementById("discountVal").textContent = `- R$ ${valorDesconto.toFixed(2).replace('.', ',')}`;
-            document.getElementById("shippingVal").textContent = frete === 0 ? "GRÁTIS" : `R$ ${frete.toFixed(2).replace('.', ',')}`;
-            document.getElementById("totalVal").textContent = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+        function emCentavos(valor) {
+            return Math.round(valor * 100);
+        }
+
+        function formatarPreco(centavos) {
+            return "R$ " + (centavos / 100).toFixed(2).replace(".", ",");
+        }
+
+        function calcularResumo() {
+            let subtotal = 0;
+            carrinho.forEach(item => {
+                subtotal += emCentavos(item.precoUnitarioFinal) * item.quantidade;
+            });
+            const desconto = cupomAplicado ? Math.round(subtotal * cupomAplicado.percentual / 100) : 0;
+            const frete = subtotal >= metaFreteGratis || carrinho.length === 0 ? 0 : taxaEntrega;
+            return { subtotal, desconto, frete, total: subtotal - desconto + frete };
         }
 
         /* ==========================================================================
            CUPONS E TROCO
            ========================================================================== */
         function aplicarCupom() {
-            const input = document.getElementById("couponInput").value.trim().toUpperCase();
-            if (input === "AGOSTINHO10") {
-                descontoPorcentagem = 0.10;
-                cupomAplicado = "AGOSTINHO10 (10% OFF)";
-                exibirToast("Cupom de 10% aplicado!", "ticket-alt");
-            } else if (input === "PRIMEIRA15") {
-                descontoPorcentagem = 0.15;
-                cupomAplicado = "PRIMEIRA15 (15% OFF)";
-                exibirToast("Cupom de 15% aplicado!", "ticket-alt");
-            } else {
-                descontoPorcentagem = 0;
-                cupomAplicado = "";
+            if (taxaEntrega === undefined) {
+                exibirToast("Aguarde o carregamento do cardápio.", "exclamation-circle");
+                return;
+            }
+            const codigo = document.getElementById("couponInput").value.trim().toUpperCase();
+            cupomAplicado = cupons.find(cupom => cupom.codigo.toUpperCase() === codigo);
+            if (cupomAplicado) {
+                exibirToast("Cupom de " + cupomAplicado.percentual + "% aplicado!", "ticket-alt");
+            } else if (codigo !== "") {
                 exibirToast("Cupom inválido!", "exclamation-circle");
             }
             atualizarCarrinhoUI();
@@ -575,7 +460,43 @@ const produtos = [
         /* ==========================================================================
            FINALIZAÇÃO E ENVIO VIA WHATSAPP
            ========================================================================== */
-        function finalizarPedidoWhatsApp() {
+        function lerTroco(valor) {
+            // Aceita R$ 50,00, 50,00 e 50.
+            const texto = valor.replace(/^R\$\s*/, "").trim();
+            if (!/^\d+(?:[,.]\d{1,2})?$/.test(texto)) return null;
+            const centavos = emCentavos(Number(texto.replace(",", ".")));
+            return centavos <= 9999999999 ? centavos : null;
+        }
+
+        function montarMensagem(pedido, resumo) {
+            let msg = "*NOVO PEDIDO - AGOSTINHO'S FOOD*\n\n";
+            msg += "*Cliente:* " + pedido.nome + "\n";
+            msg += "*Endereço:* " + pedido.endereco + "\n";
+            msg += "*Forma de Pagamento:* " + pedido.pagamento + "\n";
+            if (pedido.troco !== null) {
+                msg += "*Troco para:* " + formatarPreco(pedido.troco) + "\n";
+            }
+            msg += "\n*ITENS DO PEDIDO:*\n";
+
+            carrinho.forEach(item => {
+                const valorItem = formatarPreco(emCentavos(item.precoUnitarioFinal) * item.quantidade);
+                msg += "• *" + item.quantidade + "x " + item.nome + "* - " + valorItem + "\n";
+                if (item.extras.length > 0) {
+                    msg += "   Adicionais: " + item.extras.map(extra => extra.nome).join(", ") + "\n";
+                }
+                if (item.observacao) msg += "   Obs: " + item.observacao + "\n";
+            });
+
+            msg += "\n*RESUMO DA COMPRA:*\nSubtotal: " + formatarPreco(resumo.subtotal) + "\n";
+            if (cupomAplicado) {
+                msg += "Cupom (" + cupomAplicado.codigo + "): -" + formatarPreco(resumo.desconto) + "\n";
+            }
+            msg += "Taxa de Entrega: " + (resumo.frete === 0 ? "GRÁTIS" : formatarPreco(resumo.frete)) + "\n";
+            msg += "*TOTAL FINAL: " + formatarPreco(resumo.total) + "*";
+            return msg;
+        }
+
+        async function finalizarPedidoWhatsApp() {
             if (carrinho.length === 0) {
                 exibirToast("Seu carrinho está vazio!", "shopping-bag");
                 return;
@@ -584,48 +505,76 @@ const produtos = [
             const nome = document.getElementById("clientName").value.trim();
             const endereco = document.getElementById("clientAddress").value.trim();
             const pagamento = document.getElementById("paymentMethod").value;
-            const troco = document.getElementById("changeInput").value.trim();
+            const campoTroco = document.getElementById("changeInput").value.trim();
 
             if (!nome || !endereco) {
                 exibirToast("Preencha nome e endereço de entrega!", "exclamation-circle");
                 return;
             }
-
-            let msg = `*🍔 NOVO PEDIDO - AGOSTINHO'S FOOD 🍔*\n\n`;
-            msg += `*Cliente:* ${nome}\n`;
-            msg += `*Endereço:* ${endereco}\n`;
-            msg += `*Forma de Pagamento:* ${pagamento}\n`;
-            if (pagamento === "Dinheiro" && troco) {
-                msg += `*Troco para:* ${troco}\n`;
-            }
-            msg += `\n*ITENS DO PEDIDO:*\n`;
-
-            carrinho.forEach(item => {
-                msg += `• *${item.quantidade}x ${item.nome}* - R$ ${(item.precoUnitarioFinal * item.quantidade).toFixed(2).replace('.', ',')}\n`;
-                if (item.extras.length > 0) {
-                    msg += `   └ Adicionais: ${item.extras.map(e => e.nome).join(', ')}\n`;
+            let troco = null;
+            if (pagamento === "Dinheiro" && campoTroco !== "") {
+                troco = lerTroco(campoTroco);
+                if (troco === null) {
+                    exibirToast("Informe um valor válido para troco, como R$ 50,00.", "exclamation-circle");
+                    return;
                 }
-                if (item.observacao) {
-                    msg += `   └ Obs: ${item.observacao}\n`;
-                }
-            });
-
-            const subtotal = carrinho.reduce((acc, i) => acc + (i.precoUnitarioFinal * i.quantidade), 0);
-            const valorDesconto = subtotal * descontoPorcentagem;
-            const frete = subtotal >= metaFreteGratis ? 0 : taxaEntrega;
-            const totalFinal = Math.max(0, subtotal - valorDesconto + frete);
-
-            msg += `\n*RESUMO DA COMPRA:*\n`;
-            msg += `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-            if (descontoPorcentagem > 0) {
-                msg += `Cupom (${cupomAplicado}): -R$ ${valorDesconto.toFixed(2).replace('.', ',')}\n`;
             }
-            msg += `Taxa de Entrega: ${frete === 0 ? "GRÁTIS" : `R$ ${frete.toFixed(2).replace('.', ',')}`}\n`;
-            msg += `*TOTAL FINAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}*\n\n`;
-            msg += `_Pedido gerado pelo site oficial do Agostinho's Food_`;
 
-            const fone = "5519999998888"; // Número do restaurante
-            window.open(`https://wa.me/${fone}?text=${encodeURIComponent(msg)}`, "_blank");
+            const resumo = calcularResumo();
+            const pedido = {
+                nome, endereco, pagamento, troco,
+                cupom: cupomAplicado ? cupomAplicado.codigo : "",
+                total_centavos: resumo.total,
+                itens: carrinho.map(item => ({
+                    id_produto: item.idProduto,
+                    quantidade: item.quantidade,
+                    preco_unitario_centavos: emCentavos(item.precoUnitarioFinal),
+                    observacao: item.observacao,
+                    adicionais: item.extras.map(extra => extra.id)
+                }))
+            };
+            const carga = JSON.stringify(pedido);
+            if (carga !== ultimoPedido) {
+                ultimoPedido = carga;
+                referenciaPedido = Date.now() + "-" + Math.random();
+            }
+            pedido.referencia = referenciaPedido;
+            const mensagem = montarMensagem(pedido, resumo);
+
+            const controles = document.querySelectorAll("#cartDrawerBackdrop button, #cartDrawerBackdrop input, #cartDrawerBackdrop select");
+            const status = document.getElementById("checkoutStatus");
+            controles.forEach(controle => { controle.disabled = true; });
+            document.getElementById("whatsappLink").hidden = true;
+            status.textContent = "Registrando o pedido…";
+
+            try {
+                const resposta = await fetch("pages/salvar-pedido.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(pedido)
+                });
+                const dados = await resposta.json();
+                if (!resposta.ok) {
+                    status.textContent = dados.erro;
+                    return;
+                }
+
+                const link = document.getElementById("whatsappLink");
+                link.href = "https://wa.me/" + dados.whatsapp + "?text=" +
+                    encodeURIComponent("*Pedido #" + dados.id_pedido + "*\n" + mensagem);
+                link.hidden = false;
+                status.textContent = "Pedido #" + dados.id_pedido + " registrado. Confira e envie a mensagem no WhatsApp.";
+                carrinho = [];
+                cupomAplicado = null;
+                document.getElementById("couponInput").value = "";
+                ultimoPedido = "";
+                atualizarCarrinhoUI();
+                window.location.href = link.href;
+            } catch (erro) {
+                status.textContent = "Não foi possível confirmar o registro. Tente novamente.";
+            } finally {
+                controles.forEach(controle => { controle.disabled = false; });
+            }
         }
 
         /* ==========================================================================
@@ -637,8 +586,9 @@ const produtos = [
             toast.className = "toast";
             toast.innerHTML = `
                 <i class="fas fa-${icone}"></i>
-                <span>${mensagem}</span>
+                <span></span>
             `;
+            toast.querySelector("span").textContent = mensagem;
             container.appendChild(toast);
 
             setTimeout(() => {

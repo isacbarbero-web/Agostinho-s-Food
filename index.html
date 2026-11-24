@@ -55,38 +55,16 @@
                 <span class="banner-tag">🔥 Ofertas Especiais</span>
                 <h2>Sabor & Tradição com Entrega Rápida</h2>
                 <p>Peça os lanches e porções mais suculentos da cidade sem sair de casa!</p>
-                <div class="coupons-flex">
-                    <div class="coupon-chip" onclick="copiarCupom('AGOSTINHO10')">
-                        <i class="fas fa-ticket-alt"></i> 10% OFF: <strong>AGOSTINHO10</strong>
-                    </div>
-                    <div class="coupon-chip" onclick="copiarCupom('PRIMEIRA15')">
-                        <i class="fas fa-tag"></i> 15% 1ª Compra: <strong>PRIMEIRA15</strong>
-                    </div>
-                </div>
+                <div id="couponList" class="coupons-flex"></div>
             </div>
         </div>
     </section>
 
     <!-- NAVEGAÇÃO POR CATEGORIAS -->
     <section class="section-container">
-        <div class="categories-scroll">
-            <button class="cat-item active" onclick="filtrarCategoria('todos')">
+        <div id="categoryFilters" class="categories-scroll">
+            <button class="cat-item active" data-categoria="todos" onclick="filtrarCategoria('todos')">
                 <i class="fas fa-border-all"></i> Todos os Itens
-            </button>
-            <button class="cat-item" onclick="filtrarCategoria('hamburgueres')">
-                <i class="fas fa-hamburger"></i> Hambúrgueres
-            </button>
-            <button class="cat-item" onclick="filtrarCategoria('pizzas')">
-                <i class="fas fa-pizza-slice"></i> Pizzas
-            </button>
-            <button class="cat-item" onclick="filtrarCategoria('porcoes')">
-                <i class="fas fa-drumstick-bite"></i> Porções
-            </button>
-            <button class="cat-item" onclick="filtrarCategoria('bebidas')">
-                <i class="fas fa-glass-cheers"></i> Bebidas
-            </button>
-            <button class="cat-item" onclick="filtrarCategoria('sobremesas')">
-                <i class="fas fa-ice-cream"></i> Sobremesas
             </button>
         </div>
     </section>
@@ -97,7 +75,8 @@
             <h2 class="section-title" id="categoryTitle">Nosso Cardápio</h2>
         </div>
         <div id="productsGrid" class="products-grid">
-            <!-- Renderizado dinamicamente via JS -->
+            <p>Carregando cardápio…</p>
+            <noscript>Ative o JavaScript para consultar o cardápio e montar o pedido.</noscript>
         </div>
     </main>
 
@@ -170,7 +149,7 @@
     <div id="productModal" class="modal-backdrop">
         <div class="modal-box">
             <div class="modal-img-header">
-                <img id="modalImg" src="" alt="Produto">
+                <img id="modalImg" alt="Produto">
                 <button class="close-modal-btn" onclick="fecharModalProduto()">&times;</button>
             </div>
             <div class="modal-body">
@@ -186,7 +165,7 @@
                 </div>
 
                 <div class="extras-title">Observações do Pedido</div>
-                <textarea id="modalObs" class="obs-input" placeholder="Ex: Sem cebola, molho à parte, ponto da carne bem passado..."></textarea>
+                <textarea id="modalObs" maxlength="1000" class="obs-input" placeholder="Ex: Sem cebola, molho à parte, ponto da carne bem passado..."></textarea>
             </div>
             <div class="modal-footer">
                 <div class="modal-qty">
@@ -229,8 +208,8 @@
                 </div>
 
                 <div class="delivery-form">
-                    <input type="text" id="clientName" placeholder="Seu Nome Completo *">
-                    <input type="text" id="clientAddress" placeholder="Rua, Número e Bairro *">
+                    <input type="text" id="clientName" maxlength="150" placeholder="Seu Nome Completo *">
+                    <input type="text" id="clientAddress" maxlength="255" placeholder="Rua, Número e Bairro *">
                     <select id="paymentMethod" onchange="toggleTrocoInput()">
                         <option value="Pix">Pagamento: Pix</option>
                         <option value="Cartão de Crédito/Débito">Pagamento: Cartão na Entrega</option>
@@ -258,9 +237,11 @@
                     </div>
                 </div>
 
-                <button class="btn-whatsapp-checkout" onclick="finalizarPedidoWhatsApp()">
+                <button id="checkoutBtn" class="btn-whatsapp-checkout" onclick="finalizarPedidoWhatsApp()">
                     <i class="fab fa-whatsapp"></i> Concluir Pedido no WhatsApp
                 </button>
+                <p id="checkoutStatus" role="status"></p>
+                <a id="whatsappLink" hidden>Abrir pedido no WhatsApp</a>
             </div>
         </div>
     </div>

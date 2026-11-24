@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS cupons (
 
 CREATE TABLE IF NOT EXISTS pedidos (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    chave_requisicao CHAR(64) UNIQUE,
     codigo_cupom VARCHAR(30),
     data_pedido DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     nome_cliente VARCHAR(150) NOT NULL,

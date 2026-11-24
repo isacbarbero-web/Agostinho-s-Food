@@ -1,10 +1,14 @@
 # Agostinho’s Food
 
-Site de delivery com cardápio, personalização de produtos e carrinho. Na finalização, o site prepara uma mensagem para o cliente enviar pelo WhatsApp.
+Site de delivery com cardápio carregado do MySQL, personalização de produtos e carrinho. Na finalização, o PHP registra o pedido e o site abre a mensagem para o cliente enviar pelo WhatsApp.
 
 ## Como abrir
 
-Abra `index.html` no navegador. A página usa a internet para carregar as fotos, a fonte e os ícones externos.
+1. Prepare o banco seguindo a seção [Banco de dados MySQL](#banco-de-dados-mysql).
+2. Copie `config/local-exemplo.php` para `config/local.php`. Preencha os dados de acesso ao MySQL e confira o número do WhatsApp com código do país e DDD. O Git ignora o arquivo local.
+3. Inicie um servidor com PHP 8 e a extensão `pdo_mysql`. No Apache, coloque o projeto em uma pasta servida por ele e abra o endereço `http://localhost/agostinho-food/`. Para teste, também é possível executar `php -S localhost:8000` na raiz e abrir `http://localhost:8000/`.
+
+O navegador usa `fetch()` para falar com [cardapio.php](pages/cardapio.php) e [salvar-pedido.php](pages/salvar-pedido.php). A página precisa de um servidor PHP e, para fotos, fonte e ícones externos, de internet.
 
 ## Estrutura do projeto
 
@@ -15,8 +19,12 @@ agostinho-food/
 │   └── estilo.css      # Aparência e responsividade
 ├── js/
 │   └── main.js         # Cardápio, carrinho e finalização
+├── config/             # Conexão PDO e exemplo de configuração local
+├── includes/           # Respostas JSON
+├── pages/              # Consulta do cardápio e registro de pedidos
 ├── database/
 │   ├── banco.sql
+│   ├── atualizar-integracao.sql
 │   ├── dados-iniciais.sql
 │   └── consultas.sql
 ├── docs/
@@ -27,7 +35,7 @@ agostinho-food/
 └── README.md
 ```
 
-A organização segue o **Guia de Organização de Projetos Web**, capítulo 3. As imagens do site são carregadas por URL e a interface inteira está em `index.html`.
+A organização usa a seção PHP e MySQL do **Guia de Organização de Projetos Web**. A conexão PDO e as consultas parametrizadas seguem a apostila de DWS do 3º bimestre. A comunicação por `fetch()` e JSON segue a do 4º bimestre.
 
 ## Documentação
 
@@ -45,4 +53,6 @@ No MySQL 8.0.16 ou posterior, execute os arquivos nesta ordem. Você pode abri-l
 
 A carga dá ao Cheese Cake o ID 12 para preservar o ID 11 do Grand Gateau. A Soda Italiana aguarda revisão, pois a descrição, a foto e os adicionais no catálogo atual são de pizza.
 
-O site usa o cardápio em JavaScript. A conexão da página com o MySQL é uma etapa separada do projeto.
+Se você criou o banco antes da integração, execute [atualizar-integracao.sql](database/atualizar-integracao.sql) uma vez para acrescentar a chave que evita pedidos duplicados em reenvios. A estrutura nova já inclui essa coluna.
+
+Os pedidos são registrados em uma transação com itens, adicionais e valores calculados pelo servidor. O número gerado aparece na mensagem. O cliente ainda precisa conferir e enviar a mensagem no WhatsApp.

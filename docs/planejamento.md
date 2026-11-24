@@ -10,7 +10,7 @@ O site permite consultar o cardápio, montar um pedido de delivery e preparar um
 | RF02 | Permitir adicionar o produto diretamente ou, quando houver a opção, escolher adicionais, quantidade e observação. |
 | RF03 | Exibir o carrinho e permitir alterar quantidades, remover itens, aplicar cupom e consultar subtotal, desconto, frete e total. |
 | RF04 | Solicitar nome e endereço, permitir selecionar a forma de pagamento e exibir o campo de troco ao selecionar dinheiro. |
-| RF05 | Verificar se há itens, nome e endereço antes de abrir o WhatsApp com o resumo do pedido. |
+| RF05 | Validar os dados de entrega, consultar os valores no MySQL, registrar o pedido e abrir o WhatsApp com o resumo e o número do pedido. |
 | RNF01 | Adaptar a interface a telas de computador e celular. |
 
 ## Sitemap
@@ -35,7 +35,7 @@ Modelo conceitual do cardápio e do pedido. No JavaScript atual, produtos e iten
 
 ### Sequência
 
-O cenário começa com o carrinho aberto. Com os dados obrigatórios preenchidos e pelo menos um item, a página monta e abre a mensagem. O envio é feito pelo cliente no WhatsApp.
+O cenário começa com o carrinho aberto. Com os dados obrigatórios preenchidos e pelo menos um item, o PHP consulta o cardápio e registra o pedido, os itens e os adicionais no MySQL. Após a confirmação do registro, a página abre a mensagem com o número do pedido para o cliente enviar pelo WhatsApp.
 
 ![Diagrama de sequência da finalização com validação, abertura do WhatsApp e envio manual da mensagem](imagens/sequencia.png)
 
