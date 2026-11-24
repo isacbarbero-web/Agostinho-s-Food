@@ -52,6 +52,14 @@ A relação entre pedido e produto é N:M e fica representada pelo **Item de ped
 - Os preços unitários aplicados ficam nos itens e nas seleções de adicionais. Assim, alterações posteriores no cardápio preservam o valor do pedido já registrado. O valor do frete e o valor do desconto também ficam no pedido. Quando não há cupom, o desconto é zero.
 - O subtotal é a soma dos itens. Para cada item, some o preço unitário do produto aos preços unitários dos adicionais e multiplique pela quantidade. O total é o subtotal mais o frete, menos o desconto.
 
+## Modelo físico no MySQL
+
+O [script da estrutura](../database/banco.sql) implementa as sete tabelas, as chaves e as restrições dos campos. Valores monetários usam `DECIMAL(10,2)`. O percentual do cupom fica na escala de 0 a 100, como `10.00` para 10%.
+
+Na futura gravação de pedidos pelo site, a aplicação deve verificar se há pelo menos um item e se os adicionais escolhidos são oferecidos pelo produto de cada item.
+
+A [carga inicial](../database/dados-iniciais.sql) prepara o cardápio e os cupons. As [consultas](../database/consultas.sql) usam os exemplos de junções e agrupamento das apostilas.
+
 ## Referências de aula
 
 - **Banco de Dados — Modelagem Conceitual (ER)**, módulos 1, 3 e 5, para notação do DER, cardinalidades e passagem para o modelo lógico.
