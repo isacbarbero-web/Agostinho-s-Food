@@ -49,6 +49,10 @@ A janela de opções permite personalizar o produto. O carrinho reúne os itens,
 
 ![Wireframes da janela de personalização e do carrinho com os campos de entrega e a finalização pelo WhatsApp](imagens/wireframes-pedido.png)
 
+## Modelagem do banco
+
+O [DER e o modelo lógico](modelagem-banco.md) detalham os dados do cardápio e dos pedidos, as cardinalidades e as chaves de cada tabela.
+
 ## Referências de aula
 
 - **DWS — Guia de Organização de Projetos Web**, capítulos 2 e 3, para nomenclatura e caminhos relativos.

@@ -17,6 +17,7 @@ agostinho-food/
 │   └── main.js         # Cardápio, carrinho e finalização
 ├── docs/
 │   ├── planejamento.md
+│   ├── modelagem-banco.md
 │   ├── diagramas.drawio
 │   └── imagens/        # Figuras da documentação
 └── README.md
@@ -27,3 +28,5 @@ A organização segue o **Guia de Organização de Projetos Web**, capítulo 3. 
 ## Documentação
 
 O [planejamento](docs/planejamento.md) reúne requisitos, sitemap, diagramas UML e wireframes. O [arquivo editável](docs/diagramas.drawio) pode ser aberto no Draw.io.
+
+A [modelagem do banco](docs/modelagem-banco.md) reúne o DER e o modelo lógico.
