@@ -23,10 +23,7 @@ agostinho-food/
 ├── includes/           # Respostas JSON
 ├── pages/              # Consulta do cardápio e registro de pedidos
 ├── database/
-│   ├── banco.sql
-│   ├── atualizar-integracao.sql
-│   ├── dados-iniciais.sql
-│   └── consultas.sql
+│   └── banco.sql
 ├── docs/
 │   ├── planejamento.md
 │   ├── modelagem-banco.md
@@ -45,14 +42,55 @@ A [modelagem do banco](docs/modelagem-banco.md) reúne o DER e o modelo lógico.
 
 ## Banco de dados MySQL
 
-No MySQL 8.0.16 ou posterior, execute os arquivos nesta ordem. Você pode abri-los no MySQL Workbench ou importá-los pelo phpMyAdmin conectado ao MySQL.
-
-1. [banco.sql](database/banco.sql) cria o banco `agostinho_food` e as sete tabelas do modelo lógico.
-2. [dados-iniciais.sql](database/dados-iniciais.sql) insere categorias, produtos, adicionais e cupons. Execute a carga uma vez, em um banco recém-criado.
-3. [consultas.sql](database/consultas.sql) lista o cardápio e demonstra consultas com `INNER JOIN`, `LEFT JOIN` e `GROUP BY`. A consulta de pedidos passa a retornar linhas quando houver pedidos registrados.
+Para instalar do zero, importe [banco.sql](database/banco.sql) uma vez no MySQL 8.0.16 ou posterior. Ele cria o banco `agostinho_food`, as sete tabelas e carrega o cardápio e os cupons. Use o MySQL Workbench ou o phpMyAdmin conectado ao MySQL.
 
 A carga dá ao Cheese Cake o ID 12 para preservar o ID 11 do Grand Gateau. A Soda Italiana aguarda revisão, pois a descrição, a foto e os adicionais no catálogo atual são de pizza.
 
-Se você criou o banco antes da integração, execute [atualizar-integracao.sql](database/atualizar-integracao.sql) uma vez para acrescentar a chave que evita pedidos duplicados em reenvios. A estrutura nova já inclui essa coluna.
+Se o banco já existe e a tabela `pedidos` ainda precisa da coluna `chave_requisicao`, execute este comando uma vez para atualizar a estrutura e preservar os dados cadastrados.
+
+```sql
+USE agostinho_food;
+
+ALTER TABLE pedidos ADD COLUMN chave_requisicao CHAR(64) UNIQUE;
+```
 
 Os pedidos são registrados em uma transação com itens, adicionais e valores calculados pelo servidor. O número gerado aparece na mensagem. O cliente ainda precisa conferir e enviar a mensagem no WhatsApp.
+
+### Consultas de exemplo
+
+<details>
+<summary>Ver consultas de cardápio e pedidos</summary>
+
+```sql
+USE agostinho_food;
+
+-- Cardápio ordenado por categoria e produto.
+SELECT c.nome AS categoria, p.nome AS produto, p.preco_atual, p.nota_exibida
+FROM produtos AS p
+INNER JOIN categorias AS c ON p.id_categoria = c.id_categoria
+ORDER BY c.nome, p.nome;
+
+-- O LEFT JOIN mantém na lista os produtos sem adicionais.
+SELECT p.nome AS produto, a.nome AS adicional, a.preco_atual AS preco_adicional
+FROM produtos AS p
+LEFT JOIN adicionais AS a ON p.id_produto = a.id_produto
+ORDER BY p.nome, a.nome;
+
+-- Quantidade de produtos cadastrados em cada categoria, inclusive as vazias.
+SELECT c.nome AS categoria, COUNT(p.id_produto) AS quantidade_produtos
+FROM categorias AS c
+LEFT JOIN produtos AS p ON c.id_categoria = p.id_categoria
+GROUP BY c.id_categoria, c.nome
+ORDER BY c.nome;
+
+-- Itens dos pedidos, com o código do cupom quando houver.
+SELECT pe.id_pedido, pe.data_pedido, pe.nome_cliente, c.codigo_cupom,
+       pr.nome AS produto, i.quantidade, i.preco_unitario_produto
+FROM pedidos AS pe
+INNER JOIN itens_pedido AS i ON pe.id_pedido = i.id_pedido
+INNER JOIN produtos AS pr ON i.id_produto = pr.id_produto
+LEFT JOIN cupons AS c ON pe.codigo_cupom = c.codigo_cupom
+ORDER BY pe.id_pedido, i.id_item;
+```
+
+</details>

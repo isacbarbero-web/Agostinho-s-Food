@@ -54,11 +54,11 @@ A relação entre pedido e produto é N:M e fica representada pelo **Item de ped
 
 ## Modelo físico no MySQL
 
-O [script da estrutura](../database/banco.sql) implementa as sete tabelas, as chaves e as restrições dos campos. Valores monetários usam `DECIMAL(10,2)`. O percentual do cupom fica na escala de 0 a 100, como `10.00` para 10%.
+O [banco.sql](../database/banco.sql) cria as sete tabelas com chaves e restrições e carrega o cardápio e os cupons. Valores monetários usam `DECIMAL(10,2)`. O percentual do cupom fica na escala de 0 a 100, como `10.00` para 10%.
 
 Ao gravar um pedido, o PHP verifica se há pelo menos um item, se os adicionais pertencem ao produto e se os preços e o total conferem. A coluna técnica `chave_requisicao` é única para identificar o reenvio de um pedido que já foi registrado.
 
-A [carga inicial](../database/dados-iniciais.sql) prepara o cardápio e os cupons. As [consultas](../database/consultas.sql) usam os exemplos de junções e agrupamento das apostilas.
+O [README](../README.md#consultas-de-exemplo) reúne exemplos de junções e agrupamento das apostilas.
 
 ## Referências de aula
 
